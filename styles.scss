@@ -1,5 +1,66 @@
-$backgroundColor: #2ecc71;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.app {
-  background-color: $backgroundColor;
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.input-wrapper {
+  max-width: 400px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.atm-title {
+  text-align: center;
+  color: #333;
+}
+
+.atm-input {
+  height: 5.6rem;
+  border-radius: 0.8rem;
+  border: 2px solid #ccc;
+  padding: 0 1.6rem;
+
+  color: #333;
+  font-size: 1.6rem;
+  
+  margin: 1.6rem 0;
+}
+
+.atm-button {
+  height: 5.6rem;
+  border-radius: 0.8rem;
+  border: none;
+
+  color: #fff;
+  background-color: #3498db;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #2d92d4;
+  }
 }
