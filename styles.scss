@@ -65,3 +65,20 @@ body {
     background-color: #2d92d4;
   }
 }
+
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 1.6rem;
+}
+
+.result-title {
+  color: #333;
+}
+
+.result-text {
+  color: #333;
+  font-size: 1.6rem;
+}

@@ -4,7 +4,6 @@ const MAX_MONEY = Number.MAX_SAFE_INTEGER
 
 const numberToMoneyFormat = (money: number): string => {
   return money.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-    .replace(/^(\D+)/, '$1 ');
 };
 
 const extractNumber = (money: string): number => {
@@ -25,11 +24,6 @@ export default function Home() {
     setPrice(money)
   };
 
-  const handleShowMoney = () => {
-    const money = value / 100
-    alert(numberToMoneyFormat(money) + '\n' + money)
-  }
-
   return (
     <div className="main">
       <div className="input-wrapper">
@@ -42,9 +36,12 @@ export default function Home() {
           value={numberToMoneyFormat(value / 100)} 
           onChange={event => handleChangeText(event.target.value)} 
         />
-        <button onClick={handleShowMoney} className="atm-button">
-          Exibir
-        </button>
+
+        <div className="result-wrapper">
+          <h1 className="result-title">Resultado</h1>
+          <p className="result-text">Com formatação {numberToMoneyFormat(value / 100)}</p>
+          <p className="result-text">Sem formatação {value / 100}</p>
+        </div>
       </div>
     </div>
   )
