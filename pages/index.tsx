@@ -1,10 +1,9 @@
 import { useState } from "react"
 
-const maxMoney = Number.MAX_SAFE_INTEGER
+const MAX_MONEY = Number.MAX_SAFE_INTEGER
 
-const numberForReal = (money: number): string => {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
-    .format(money)
+const numberToMoneyFormat = (money: number): string => {
+  return money.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     .replace(/^(\D+)/, '$1 ');
 };
 
@@ -17,23 +16,18 @@ export default function Home() {
 
   const handleChangeText = (text: string) => {    
     const number = extractNumber(text)
+    let money = number
 
-    if (number > maxMoney) {
-      setPrice(maxMoney)
-      return;
-    }
+    if (number > MAX_MONEY) money = MAX_MONEY
     
-    if (number < 0) {
-      setPrice(0)
-      return;
-    } 
+    if (number < 0) money = 0 
     
-    setPrice(number)
+    setPrice(money)
   };
 
   const handleShowMoney = () => {
     const money = value / 100
-    alert(numberForReal(money) + '\n' + money)
+    alert(numberToMoneyFormat(money) + '\n' + money)
   }
 
   return (
@@ -45,7 +39,7 @@ export default function Home() {
           name="atm"
           className="atm-input"
           inputMode="numeric"
-          value={numberForReal(value / 100)} 
+          value={numberToMoneyFormat(value / 100)} 
           onChange={event => handleChangeText(event.target.value)} 
         />
         <button onClick={handleShowMoney} className="atm-button">
